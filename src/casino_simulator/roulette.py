@@ -3,8 +3,10 @@ Roulette simulator.
 
 This module contains the classes that model the game of roulette.
 """
+import dataclasses
 
 
+@dataclasses.dataclass(frozen=True)
 class Outcome:
     """Outcome contains a single outcome on which a bet can be placed.
 
@@ -24,15 +26,8 @@ class Outcome:
             or 17:1, we only keep the numerator(17) and assume the denominator is 1.
     """
 
-    def __init__(self, name: str, odds: int) -> None:
-        """Create a new Outcome with the given name and odds.
-
-        Parameters:
-            name (str): The name of the Outcome.
-            odds (int): The payout ratio for the Outcome.
-        """
-        self.name = name
-        self.odds = odds
+    name: str
+    odds: int
 
     def win_amount(self, amount: float) -> float:
         """Multiply this Outcome's odds by the amount bet to determine the amount won.
@@ -45,24 +40,6 @@ class Outcome:
         """
         return amount * self.odds
 
-    def __eq__(self, other: object) -> bool:
-        """Compare the name attribute of this Outcome to the name attribute of another Outcome."""
-        if not isinstance(other, Outcome):
-            return False
-        return self.name == other.name
-
-    def __ne__(self, other: object) -> bool:
-        """Compare the name attribute of this Outcome to the name attribute of another Outcome."""
-        return not self.__eq__(other)
-
-    def __hash__(self) -> int:
-        """Hash the name attribute of this Outcome."""
-        return hash(self.name)
-
     def __str__(self) -> str:
         """Easy-to-read string representation of this Outcome."""
         return f"{self.name:s} ({self.odds:d}:1)"
-
-    def __repr__(self) -> str:
-        """Unambiguous string representation of this Outcome."""
-        return f"{self.__class__.__name__:s}(name={self.name!r}, odds={self.odds!r})"

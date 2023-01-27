@@ -32,3 +32,17 @@ def test_outcome_win_amount():
     o2 = Outcome("Black", 2)
     assert o1.win_amount(10) == 10
     assert o2.win_amount(10) == 20
+
+
+def test_outcome_str():
+    o1 = Outcome("Red", 1)
+    o2 = Outcome("Black", 2)
+    assert str(o1) == "Red (1:1)"
+    assert str(o2) == "Black (2:1)"
+
+
+def test_outcome_repr():
+    o1 = Outcome("Red", 1)
+    o2 = Outcome("Black", 2)
+    assert repr(o1) == "Outcome(name='Red', odds=1)"
+    assert repr(o2) == "Outcome(name='Black', odds=2)"

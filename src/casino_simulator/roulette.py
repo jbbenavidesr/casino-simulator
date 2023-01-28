@@ -8,7 +8,7 @@ import dataclasses
 
 @dataclasses.dataclass(frozen=True)
 class Outcome:
-    """Outcome contains a single outcome on which a bet can be placed.
+    """Contains a single outcome on which a bet can be placed.
 
     In Roulette, each spin of the wheel has a number of Outcome objects with bets that
     will be paid off. For example, the “1” bin has the following winning Outcome instances:

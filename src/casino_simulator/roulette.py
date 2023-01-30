@@ -44,3 +44,35 @@ class Outcome:
     def __str__(self) -> str:
         """Easy-to-read string representation of this Outcome."""
         return f"{self.name:s} ({self.odds:d}:1)"
+
+
+class Bin(frozenset):
+    """Represents a bin on the roulette wheel.
+
+    A Bin is a container of Outcome objects. It represents the bins on the wheel, and
+    contains all of the winning Outcomes for a given spin of the wheel where the ball
+    lands in that bin.
+
+    For example, the "1" bin contains the following Outcomes:
+    "1", "Red", "Odd", "Low", "Column 1", "Dozen 1-12", "Split 1-2", "Split 1-4",
+    "Street 1-2-3", "Corner 1-2-4-5", "Five Bet", "Line 1-2-3-4-5-6", "00-0-1-2-3",
+    "Dozen 1", "Low" and "Column 1". All of these Outcomes are collected in a single
+    Bin instance representing the "1" bin.
+
+    The following code shows how to create a Bin instance containing the "0" and "00"
+    bins and their associated Outcomes:
+
+    .. code-block:: python
+
+        five = Outcome("00-0-1-2-3", 6)
+        zero = Bin([Outcome("0", 35), five])
+        zerozero = Bin([Outcome("00", 35), five])
+
+
+    .. note::
+        This class is a subclass of frozenset. This means that it allows no duplicates,
+        has no order, and is immutable. This is a good choice for a Bin because it
+        should never change after it is created. It is also a good choice because it
+        allows no duplicates, which is important because a Bin should never contain
+        duplicate Outcomes.
+    """

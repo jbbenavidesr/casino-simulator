@@ -9,17 +9,27 @@ Welcome to Casino Simulator's documentation!
 **Casino Simulator** is a Python application that simulates some casino games. This
 project is made for learning the principles of Object Oriented Design by following this
 excellent book `Building Skills in Object-Oriented Design <https://slott56.github.io/building-skills-oo-design-book/>`_.
+The book guides the reader through the design process of a casino simulation where the
+author describes the general steps and thinking process of designing a system. The
+author doesn't provide any code, just explains the design and provides a set of deliverables
+that the reader should implement in Python and build it using all the best practices
+of a software project: unit tests, documentation and clean code.
 
-In the process I'll learn a lot of design and general princples of building good software,
-including Documentation and Testing.
+This documentation will be my personal notes and reflections of the book and the
+project. I'll be adding more content as I go. I'll give my own overview of the
+problem to be implemented and my own thoughts on the design process.
 
 .. note::
 
-   This is a work in progress and a learning project. I'll be adding more games and features as I go.
+   This project is still in development. I'm still working on the book and the
+   project. I'll be adding more content as I go.
+
 
 Contents
 --------
 
 .. toctree::
+   :maxdepth: 2
 
-    roulette
+   introduction
+   roulette

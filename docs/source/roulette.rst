@@ -2,7 +2,7 @@ Roulette
 ========
 
 Roulette is a simple game of chance. The player places a bet on a number or a combination
-of numbers, and then spins the wheel. If the ball lands on the number or combination of 
+of numbers, and then spins the wheel. If the ball lands on the number or combination of
 numbers the player bet on, the player wins.
 
 The game is played with a wheel that has 38 slots, numbered 0 to 36. The numbers 1 to 36

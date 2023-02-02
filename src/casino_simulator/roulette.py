@@ -4,6 +4,7 @@ Roulette simulator.
 This module contains the classes that model the game of roulette.
 """
 import dataclasses
+import random
 
 
 @dataclasses.dataclass(frozen=True)
@@ -46,7 +47,7 @@ class Outcome:
         return f"{self.name:s} ({self.odds:d}:1)"
 
 
-class Bin(frozenset):
+class Bin(set):
     """Represents a bin on the roulette wheel.
 
     A Bin is a container of Outcome objects. It represents the bins on the wheel, and
@@ -76,3 +77,48 @@ class Bin(frozenset):
         allows no duplicates, which is important because a Bin should never contain
         duplicate Outcomes.
     """
+
+
+class Wheel:
+    """Represents a roulette wheel.
+
+    The wheel contains the 38 individual Bins that make up the wheel and a random number
+    generator. It selects a Bin at random, simulating the spinning of a roulette wheel.
+
+    Attributes:
+        rng (random.Random): A random number generator.
+        bins (tuple[Bin]): A list of 38 Bins.
+    """
+
+    def __init__(self) -> None:
+        """Creates a new Wheel instance with 38 empty Bins and a new random generator"""
+        self.bins = tuple(Bin() for _ in range(38))
+        self.rng = random.Random()
+
+    def add_outcome(self, bin_number: int, outcome: Outcome) -> None:
+        """Adds an Outcome to the Bin at the given index.
+
+        Parameters:
+            bin_number (int): The index of the Bin to add the Outcome to.
+            outcome (Outcome): The Outcome to add to the Bin.
+        """
+        self.bins[bin_number].add(outcome)
+
+    def choose(self) -> Bin:
+        """Selects a Bin at random and returns it.
+
+        Returns:
+            Bin: A random Bin.
+        """
+        return self.rng.choice(self.bins)
+
+    def get(self, bin_number: int) -> Bin:
+        """Returns the Bin at the given index.
+
+        Parameters:
+            bin_number (int): The index of the Bin to return.
+
+        Returns:
+            Bin: The Bin at the given index.
+        """
+        return self.bins[bin_number]
